@@ -19,6 +19,7 @@ interface Point {
   id: number
   name: string
   image: string
+  image_url: string
   latitude: number
   longitude: number
 }
@@ -110,11 +111,11 @@ const Points = () => {
                       <MapView style={styles.map} initialRegion={{ latitude: initialPosition[0], longitude: initialPosition[1], latitudeDelta: 0.014, longitudeDelta: 0.014 }} >
                         {points.map(point => (
                           <Marker key={String(point.id)} style={styles.mapMarker} coordinate={{ latitude: point.latitude, longitude: point.longitude }} onPress={() => handleNavigateToDetail(point.id)}>
-                          <View style={styles.mapMarkerContainer}>
-                            <Image style={styles.mapMarkerImage} source={{ uri: point.image }} /> 
-                            <Text style={styles.mapMarkerTitle}>{point.name}</Text>
-                          </View>
-                      </Marker> 
+                            <View style={styles.mapMarkerContainer}>
+                              <Image style={styles.mapMarkerImage} source={{ uri: point.image_url }} /> 
+                              <Text style={styles.mapMarkerTitle}>{point.name}</Text>
+                            </View>
+                          </Marker> 
                         ))}
                       </MapView>
                     )}
